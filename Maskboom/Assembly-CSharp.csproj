@@ -64,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CameraController.cs" />
+    <Compile Include="Assets\Code\EnemySpawner.cs" />
+    <Compile Include="Assets\Code\Interfaces\IEnemySpawner.cs" />
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\SmoothMouseLook.cs" />
     <Reference Include="UnityEngine">
