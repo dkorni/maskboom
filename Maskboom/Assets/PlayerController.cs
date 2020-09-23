@@ -23,13 +23,10 @@ public class PlayerController : MonoBehaviour
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
 
-        var directionVertical = transform.forward * vertical *_speed * Time.deltaTime;
-        var directionHorizontal = transform.right * horizontal *_speed * Time.deltaTime;
-
+        var direction = new Vector3(horizontal, 0,  vertical) * _speed*Time.deltaTime;
 
         //_characterController.Move(direction);
-        _rigidbody.MovePosition(transform.position + directionVertical);
-        _rigidbody.MovePosition(transform.position + directionHorizontal);
+        _rigidbody.MovePosition(transform.position + direction);
         //_rigidbody.velocity =  + direction);
 
     }

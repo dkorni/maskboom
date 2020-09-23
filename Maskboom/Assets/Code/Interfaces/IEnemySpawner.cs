@@ -4,6 +4,9 @@ using UnityEngine;
 
 interface IEnemySpawner 
 {
+    float MinRadius { get; }
+    float MaxRadius { get; }
+
     void StartSpawn();
 
     void StopSpawn();

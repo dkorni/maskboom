@@ -1,9 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour, IEnemySpawner
 {
+    public PlayerController Player;
+
     [SerializeField] protected List<GameObject> _enemyPrefabs;
 
     [SerializeField] private float _minTime = 3;
@@ -21,6 +25,15 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
     private Coroutine _processCoroutine;
 
     private float _nextTimeToSpawn;
+
+    public float MinRadius => _minRadius;
+
+    public float MaxRadius => _maxRadius;
+
+    void Start()
+    {
+        StartSpawn();
+    }
 
     public void StartSpawn()
     {
@@ -66,6 +79,19 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
     protected virtual void SpawnEnemy()
     {
         // todo
+        var angle = Random.Range(0, 360);
+        var radius = Random.Range(_minRadius, _maxRadius);
+        var x = Math.Cos(angle) * radius + Player.transform.position.x;
+        var y = Player.transform.position.y;
+        var z = Math.Sin(angle) * radius + Player.transform.position.z;
+
+        // todo check collisions with other objects and scene
+
+        var point = new Vector3((float)x,y,(float)z);
+        Debug.Log(point);
+
+        var prefabToSpawn = _enemyPrefabs[Random.Range(0, _enemyPrefabs.Count - 1)];
+        var enemy = Instantiate(prefabToSpawn, point, Quaternion.identity);
     }
 
     private void RandomizeNextTime()
