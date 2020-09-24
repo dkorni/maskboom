@@ -18,4 +18,6 @@ interface IEnemySpawner
     void UpdateRadius(float fragCoef);
 
     void UpdateAmount(float fragCoef);
+
+    void MaxEnemies(int enemyCount);
 }

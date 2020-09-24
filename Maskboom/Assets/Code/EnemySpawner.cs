@@ -22,6 +22,10 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
     [SerializeField] private int _minAmount;
     [SerializeField] private int _maxAmount;
 
+    [SerializeField] private int _maxEnemies = 10;
+
+    [SerializeField] private int _currentEnemies;
+
     private Coroutine _processCoroutine;
 
     private float _nextTimeToSpawn;
@@ -66,9 +70,14 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
         throw new System.NotImplementedException();
     }
 
+    public void MaxEnemies(int enemyCount)
+    {
+        _maxEnemies = enemyCount;
+    }
+
     protected IEnumerator SpawnProcess()
     {
-        while (true)
+        while (_currentEnemies < _maxEnemies)
         {
             SpawnEnemy();
             yield return new WaitForSeconds(_nextTimeToSpawn);
@@ -92,12 +101,14 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
 
         var prefabToSpawn = _enemyPrefabs[Random.Range(0, _enemyPrefabs.Count - 1)];
         var enemy = Instantiate(prefabToSpawn, point, Quaternion.identity);
+
+        enemy.GetComponent<IEnemy>().SetTarget(Player.transform);
+
+        _currentEnemies++;
     }
 
     private void RandomizeNextTime()
     {
-        Random.InitState((int)Time.time);
-
         _nextTimeToSpawn = Random.Range(_minTime, _maxTime);
     }
 }
