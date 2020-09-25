@@ -30,8 +30,12 @@ public class BaseGun : MonoBehaviour, IGun
 
     protected virtual IEnumerator ShootProcess()
     {
-        var bullet = Instantiate(_bullet, _bulletSpawn.position, _bulletSpawn.rotation);
-        var bulletRb = bullet.GetComponent<Rigidbody>();
+        var bulletGo = Instantiate(_bullet, _bulletSpawn.position, _bulletSpawn.rotation);
+
+        var bullet = bulletGo.GetComponent<Bullet>();
+        bullet.Damage = _damage;
+
+        var bulletRb = bulletGo.GetComponent<Rigidbody>();
         bulletRb.AddForce(transform.forward * _force, ForceMode.Impulse);
 
         yield return null;

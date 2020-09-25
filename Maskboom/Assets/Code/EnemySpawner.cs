@@ -77,11 +77,14 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
 
     protected IEnumerator SpawnProcess()
     {
-        while (_currentEnemies < _maxEnemies)
+        while (true)
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(_nextTimeToSpawn);
-            RandomizeNextTime();
+            if (_currentEnemies < _maxEnemies)
+            {
+                SpawnEnemy();
+                yield return new WaitForSeconds(_nextTimeToSpawn);
+                RandomizeNextTime();
+            }
         }
     }
 

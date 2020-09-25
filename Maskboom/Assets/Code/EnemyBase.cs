@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Assets.Code.Interfaces;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine.AI;
 
 public class EnemyBase : MonoBehaviour, IEnemy, IDamageable
 {
+    public event Action OnDied;
     public float Health => _health;
 
     [SerializeField] private float _health;
@@ -38,8 +40,14 @@ public class EnemyBase : MonoBehaviour, IEnemy, IDamageable
     }
 
     
-    public void SedDamage(float damage)
+    public void SetDamage(float damage)
     {
-        throw new System.NotImplementedException();
+        _health -= damage;
+        if (_health <= 0)
+        {
+            Destroy(gameObject);
+
+            OnDied?.Invoke();
+        }
     }
 }

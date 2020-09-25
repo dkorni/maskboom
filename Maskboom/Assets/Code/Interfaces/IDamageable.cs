@@ -8,8 +8,10 @@ namespace Assets.Code.Interfaces
 {
     interface IDamageable
     {
+        event Action OnDied;
+
         float Health { get; }
 
-        void SedDamage(float damage);
+        void SetDamage(float damage);
     }
 }
