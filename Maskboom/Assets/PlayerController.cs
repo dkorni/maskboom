@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rigidbody;
 
     [SerializeField]
+    private BaseGun _gun;
+
+    [SerializeField]
     private float _speed;
 
     // Start is called before the first frame update
@@ -15,6 +18,18 @@ public class PlayerController : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _rigidbody = GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            _gun.Shoot();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            _gun.StopShoot();
+        }
     }
 
     // Update is called once per frame

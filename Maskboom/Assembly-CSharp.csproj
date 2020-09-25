@@ -67,9 +67,11 @@
     <Compile Include="Assets\Code\Constants.cs" />
     <Compile Include="Assets\Code\EnemyBase.cs" />
     <Compile Include="Assets\Code\EnemySpawner.cs" />
+    <Compile Include="Assets\Code\Interfaces\BaseGun.cs" />
     <Compile Include="Assets\Code\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\Code\Interfaces\IEnemy.cs" />
     <Compile Include="Assets\Code\Interfaces\IEnemySpawner.cs" />
+    <Compile Include="Assets\Code\Interfaces\IGun.cs" />
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\SmoothMouseLook.cs" />
     <Reference Include="UnityEngine">
