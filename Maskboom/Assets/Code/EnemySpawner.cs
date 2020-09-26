@@ -85,6 +85,8 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
                 yield return new WaitForSeconds(_nextTimeToSpawn);
                 RandomizeNextTime();
             }
+
+            yield return null;
         }
     }
 

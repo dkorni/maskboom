@@ -19,7 +19,7 @@ public class BaseGun : MonoBehaviour, IGun
 
     public void Shoot()
     {
-        StartCoroutine(ShootProcess());
+        _shootingProcess = StartCoroutine(ShootProcess());
     }
 
     public void StopShoot()
