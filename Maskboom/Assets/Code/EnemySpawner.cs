@@ -17,8 +17,8 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
     [SerializeField] private float _minSpeed;
     [SerializeField] private float _maxSpeed;
 
-    [SerializeField] private float _minRadius;
-    [SerializeField] private float _maxRadius;
+    [SerializeField] private float _minRadius = Constants.MAX_SPAWN_DISTANCE/2;
+    [SerializeField] private float _maxRadius = Constants.MAX_SPAWN_DISTANCE;
 
     [SerializeField] private int _minAmount;
     [SerializeField] private int _maxAmount;
@@ -35,11 +35,6 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
 
     public float MaxRadius => _maxRadius;
 
-    void Start()
-    {
-        StartSpawn();
-    }
-
     public void StartSpawn()
     {
         RandomizeNextTime();
@@ -53,7 +48,8 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
 
     public void UpdateTime(float fragCoef)
     {
-        throw new System.NotImplementedException();
+        _minTime = Mathf.Max(Constants.MIN_SPAWN_TIME, _minTime - fragCoef);
+        _maxTime = Mathf.Max(Constants.MIN_SPAWN_TIME + 0.5f, _maxTime - fragCoef);
     }
 
     public void UpdateSpeed(float fragCoef)
@@ -63,12 +59,13 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
 
     public void UpdateRadius(float fragCoef)
     {
-        throw new System.NotImplementedException();
+        _minRadius = Mathf.Max(Constants.MIN_SPAWN_DISTANCE, _minRadius - fragCoef);
+        _maxRadius = Mathf.Max(Constants.MIN_SPAWN_DISTANCE+5, _maxRadius - fragCoef);
     }
 
     public void UpdateAmount(float fragCoef)
     {
-        throw new System.NotImplementedException();
+        _maxEnemies = Mathf.Min(_maxEnemies + 1, Constants.MAX_ENEMIES);
     }
 
     public void MaxEnemies(int enemyCount)
@@ -113,7 +110,7 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
         enemy.OnDied += () =>
         {
             _currentEnemies -= 1;
-            GameManager.Instance.KillCoefficient += Constants.KillExp;
+            GameManager.Instance.KillCoefficient += Constants.KILL_EXP;
         };
 
 

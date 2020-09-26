@@ -25,6 +25,12 @@ public class GameManager : MonoBehaviour
 
             // notify all other subscribers that value is changed
             OnKillCoefficientChanged?.Invoke(value);
+
+            // change spawner configuration
+            _enemySpawner.UpdateAmount(value);
+            _enemySpawner.UpdateRadius(value);
+           // _enemySpawner.UpdateSpeed(value);
+            _enemySpawner.UpdateTime(value);
         }
     }
 
@@ -32,12 +38,15 @@ public class GameManager : MonoBehaviour
 
     private static GameManager _instance;
 
+    [SerializeField]
+    private EnemySpawner _enemySpawner;
+
     private float _killCoefficient;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _enemySpawner.StartSpawn();
     }
 
     // Update is called once per frame
