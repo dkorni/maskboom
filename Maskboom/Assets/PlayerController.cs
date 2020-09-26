@@ -41,15 +41,17 @@ public class PlayerController : MonoBehaviour
         var direction = new Vector3(horizontal, 0,  vertical) * _speed*Time.deltaTime;
 
         var mousePos = Input.mousePosition;
+
+        // player position on the screen
         var playerPos = Camera.main.WorldToScreenPoint(transform.position);
 
+        // direction ro mouse position
         var dir = mousePos - playerPos;
 
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
 
         _rigidbody.rotation = Quaternion.AngleAxis(-angle, Vector3.up);
 
-        //_characterController.Move(direction);
         _rigidbody.MovePosition(transform.position + direction);
     }
 }

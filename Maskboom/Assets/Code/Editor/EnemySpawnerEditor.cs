@@ -13,7 +13,10 @@ public class EnemySpawnerEditor : Editor
 
         if (player != null)
         {
-            Handles.DrawWireArc(player.transform.position, Vector3.down, Vector3.down, 360, enemySpawner.MinRadius);
+            Handles.color = Color.red;
+            Handles.DrawWireDisc(player.transform.position, Vector3.down, enemySpawner.MinRadius);
+            Handles.color = Color.blue;
+            Handles.DrawWireDisc(player.transform.position, Vector3.down, enemySpawner.MaxRadius);
         }
     }
 }
