@@ -933,7 +933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bullet: {fileID: 3463949918846253147, guid: 722ef5686fb84c34eb826752963aa9b1, type: 3}
   _bulletSpawn: {fileID: 1542815844}
-  _damage: 0
+  _damage: 100
   _force: 15
 --- !u!65 &207399115
 BoxCollider:
