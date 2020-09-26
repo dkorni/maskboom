@@ -35,6 +35,8 @@ public class BaseGun : MonoBehaviour, IGun
         var bullet = bulletGo.GetComponent<Bullet>();
         bullet.Damage = _damage;
 
+        Destroy(bullet.gameObject, 1.5f);
+
         var bulletRb = bulletGo.GetComponent<Rigidbody>();
         bulletRb.AddForce(transform.forward * _force, ForceMode.Impulse);
 

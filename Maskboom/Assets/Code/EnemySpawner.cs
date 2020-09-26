@@ -105,9 +105,12 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
         Debug.Log(point);
 
         var prefabToSpawn = _enemyPrefabs[Random.Range(0, _enemyPrefabs.Count - 1)];
-        var enemy = Instantiate(prefabToSpawn, point, Quaternion.identity);
+        var enemyGo = Instantiate(prefabToSpawn, point, Quaternion.identity);
 
-        enemy.GetComponent<IEnemy>().SetTarget(Player.transform);
+        var enemy = enemyGo.GetComponent<EnemyBase>();
+        enemy.SetTarget(Player.transform);
+        enemy.OnDied += () => { _currentEnemies -= 1; };
+
 
         _currentEnemies++;
     }
