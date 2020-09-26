@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Code;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -109,7 +110,11 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
 
         var enemy = enemyGo.GetComponent<EnemyBase>();
         enemy.SetTarget(Player.transform);
-        enemy.OnDied += () => { _currentEnemies -= 1; };
+        enemy.OnDied += () =>
+        {
+            _currentEnemies -= 1;
+            GameManager.Instance.KillCoefficient += Constants.KillExp;
+        };
 
 
         _currentEnemies++;
