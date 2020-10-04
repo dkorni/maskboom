@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Code.Interfaces
 {
-    interface IDamageable
+    public interface IDamageable
     {
         event Action OnDied;
 

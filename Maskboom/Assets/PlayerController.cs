@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Assets.Code.Interfaces;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     private CharacterController _characterController;
     private Rigidbody _rigidbody;
@@ -12,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float _speed;
+
+    [SerializeField] private float _health;
 
     // Start is called before the first frame update
     void Start()
@@ -53,5 +57,18 @@ public class PlayerController : MonoBehaviour
         _rigidbody.rotation = Quaternion.AngleAxis(-angle, Vector3.up);
 
         _rigidbody.MovePosition(transform.position + direction);
+    }
+
+    public event Action OnDied;
+    public float Health => _health;
+    public void SetDamage(float damage)
+    {
+        _health -= damage;
+
+        if (_health <= 0)
+        {
+            OnDied?.Invoke();
+            Destroy(gameObject);
+        }
     }
 }

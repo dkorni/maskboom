@@ -148,3 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+  _damage: 10
+  _attackDistance: 1.4
+  _attackDelay: 1
