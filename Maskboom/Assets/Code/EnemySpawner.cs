@@ -17,13 +17,37 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
     [SerializeField] private float _minSpeed;
     [SerializeField] private float _maxSpeed;
 
+    [Range(-20,50)]
+    [SerializeField]
+    private float _radiusHumpWidth = 5.6f;
+
+    [Range(-1, 1)]
+    [SerializeField]
+    private float _radiusHumpHeight = 0.05f;
+
+    [Range(-15,15)]
+    [SerializeField]
+    private float _radiusOffset = 5.1f;
+
     [SerializeField] private float _minRadius = Constants.MAX_SPAWN_DISTANCE/2;
     [SerializeField] private float _maxRadius = Constants.MAX_SPAWN_DISTANCE;
 
-    [SerializeField] private int _minAmount;
-    [SerializeField] private int _maxAmount;
+    [Range(-20, 50)]
+    [SerializeField]
+    private float _amountHumpWidth = 5.6f;
 
-    [SerializeField] private int _maxEnemies = 10;
+    [Range(-1, 20)]
+    [SerializeField]
+    private float _amounHumpHeight = 0.05f;
+
+    [Range(-15, 15)]
+    [SerializeField]
+    private float _amountOffset = 5.1f;
+
+    [SerializeField] private float _minAmount;
+    [SerializeField] private float _maxAmount;
+
+    [SerializeField] private float _maxEnemies = 10;
 
     [SerializeField] private int _currentEnemies;
 
@@ -59,7 +83,7 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
 
     public void UpdateRadius(float fragCoef)
     {
-        var radiusToMinus = GameMath.CalculateComplexity(fragCoef, 0.3f, 10, 1.3f);
+        var radiusToMinus = GameMath.CalculateComplexity(fragCoef, _radiusHumpHeight, _radiusHumpWidth, _radiusOffset);
         Debuger.RadiusCalculationDebug(fragCoef, radiusToMinus);
         _minRadius = Mathf.Max(Constants.MIN_SPAWN_DISTANCE, _minRadius - radiusToMinus);
         _maxRadius = Mathf.Max(Constants.MIN_SPAWN_DISTANCE+5, _maxRadius - radiusToMinus);
@@ -67,7 +91,10 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
 
     public void UpdateAmount(float fragCoef)
     {
-        _maxEnemies = Mathf.Min(_maxEnemies + 1, Constants.MAX_ENEMIES);
+        var enemyToAdd = GameMath.CalculateComplexity(fragCoef, _amounHumpHeight, _amountHumpWidth, _amountOffset);
+        Debuger.EnemyCountCalculationDebug(fragCoef, enemyToAdd);
+        _maxEnemies = _maxEnemies + enemyToAdd;
+        _maxEnemies = Mathf.Min(_maxEnemies, Constants.MAX_ENEMIES);
     }
 
     public void MaxEnemies(int enemyCount)
@@ -79,7 +106,7 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
     {
         while (true)
         {
-            if (_currentEnemies < _maxEnemies)
+            if (_currentEnemies < (int)_maxEnemies)
             {
                 SpawnEnemy();
                 yield return new WaitForSeconds(_nextTimeToSpawn);

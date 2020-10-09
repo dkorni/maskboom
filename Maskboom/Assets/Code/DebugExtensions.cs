@@ -12,4 +12,12 @@ public class Debuger
             stringWriter.WriteLine($"{gameCoef} {result}");
         }
     }
+
+    public static void EnemyCountCalculationDebug(float gameCoef, double result)
+    {
+        using (var stringWriter = new StreamWriter("EnemyCountCalculationStatistic.stats", true))
+        {
+            stringWriter.WriteLine($"{gameCoef} {result}");
+        }
+    }
 }

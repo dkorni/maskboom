@@ -2162,8 +2162,14 @@ MonoBehaviour:
   _maxTime: 5
   _minSpeed: 0
   _maxSpeed: 0
+  _radiusHumpWidth: 5.6
+  _radiusHumpHeight: 0.05
+  _radiusOffset: 5.1
   _minRadius: 20
   _maxRadius: 40
+  _amountHumpWidth: 15.2
+  _amounHumpHeight: 5
+  _amountOffset: 4.1
   _minAmount: 0
   _maxAmount: 0
   _maxEnemies: 10
@@ -10224,11 +10230,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675871077580509833, guid: a97487267b19ea64f9638d297f3e77a9,
-        type: 3}
-      propertyPath: _health
-      value: 1e+23
       objectReference: {fileID: 0}
     - target: {fileID: 4675871077580509844, guid: a97487267b19ea64f9638d297f3e77a9,
         type: 3}
