@@ -59,8 +59,10 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
 
     public void UpdateRadius(float fragCoef)
     {
-        _minRadius = Mathf.Max(Constants.MIN_SPAWN_DISTANCE, _minRadius - fragCoef);
-        _maxRadius = Mathf.Max(Constants.MIN_SPAWN_DISTANCE+5, _maxRadius - fragCoef);
+        var radiusToMinus = GameMath.CalculateComplexity(fragCoef, 0.3f, 10, 1.3f);
+        Debuger.RadiusCalculationDebug(fragCoef, radiusToMinus);
+        _minRadius = Mathf.Max(Constants.MIN_SPAWN_DISTANCE, _minRadius - radiusToMinus);
+        _maxRadius = Mathf.Max(Constants.MIN_SPAWN_DISTANCE+5, _maxRadius - radiusToMinus);
     }
 
     public void UpdateAmount(float fragCoef)
@@ -100,7 +102,6 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
         // todo check collisions with other objects and scene
 
         var point = new Vector3((float)x,y,(float)z);
-        Debug.Log(point);
 
         var prefabToSpawn = _enemyPrefabs[Random.Range(0, _enemyPrefabs.Count - 1)];
         var enemyGo = Instantiate(prefabToSpawn, point, Quaternion.identity);

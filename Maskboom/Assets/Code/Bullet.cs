@@ -14,7 +14,9 @@ public class Bullet : MonoBehaviour
         {
             var damageable = col.transform.GetComponent<IDamageable>();
             damageable.SetDamage(Damage);
-            Debug.Log($"Player hitted enemy {col.transform.name}");
+            //  Debug.Log($"Player hitted enemy {col.transform.name}");
         }
+        Destroy(gameObject);
+        Debug.Log($"Player hitted enemy {col.transform.name}");
     }
 }

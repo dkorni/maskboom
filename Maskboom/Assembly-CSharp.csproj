@@ -67,9 +67,11 @@
     <Compile Include="Assets\Code\BaseGun.cs" />
     <Compile Include="Assets\Code\Bullet.cs" />
     <Compile Include="Assets\Code\Constants.cs" />
+    <Compile Include="Assets\Code\DebugExtensions.cs" />
     <Compile Include="Assets\Code\EnemyBase.cs" />
     <Compile Include="Assets\Code\EnemySpawner.cs" />
     <Compile Include="Assets\Code\GameManager.cs" />
+    <Compile Include="Assets\Code\GameMath.cs" />
     <Compile Include="Assets\Code\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\Code\Interfaces\IEnemy.cs" />
     <Compile Include="Assets\Code\Interfaces\IEnemySpawner.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Assets\Code\UI\KillCoefficientLabel.cs" />
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\SmoothMouseLook.cs" />
+    <None Include="Assets\Audio\SFX\ShootingSound\ReadMe.txt" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

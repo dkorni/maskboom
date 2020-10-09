@@ -15,11 +15,20 @@ public class BaseGun : MonoBehaviour, IGun
 
     [SerializeField] protected float _force;
 
+    protected AudioSource _audioSource;
+
+    [SerializeField] protected AudioClip _shootClip;
+
     private Coroutine _shootingProcess;
 
     public void Shoot()
     {
         _shootingProcess = StartCoroutine(ShootProcess());
+
+        if (_audioSource == null)
+            _audioSource = GetComponent<AudioSource>();
+
+        _audioSource.PlayOneShot(_shootClip);
     }
 
     public void StopShoot()
