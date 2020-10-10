@@ -11,6 +11,18 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
 
     [SerializeField] protected List<GameObject> _enemyPrefabs;
 
+    [Range(-20, 50)]
+    [SerializeField]
+    private float _timeHumpWidth = 9.3f;
+
+    [Range(-1, 20)]
+    [SerializeField]
+    private float _timeHumpHeight = 0.5f;
+
+    [Range(-15, 15)]
+    [SerializeField]
+    private float _timeOffset = 2.3f;
+
     [SerializeField] private float _minTime = 3;
     [SerializeField] private float _maxTime =5;
 
@@ -44,9 +56,6 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
     [SerializeField]
     private float _amountOffset = 5.1f;
 
-    [SerializeField] private float _minAmount;
-    [SerializeField] private float _maxAmount;
-
     [SerializeField] private float _maxEnemies = 10;
 
     [SerializeField] private int _currentEnemies;
@@ -72,8 +81,9 @@ public class EnemySpawner : MonoBehaviour, IEnemySpawner
 
     public void UpdateTime(float fragCoef)
     {
-        _minTime = Mathf.Max(Constants.MIN_SPAWN_TIME, _minTime - fragCoef);
-        _maxTime = Mathf.Max(Constants.MIN_SPAWN_TIME + 0.5f, _maxTime - fragCoef);
+        var timeToMinus = GameMath.CalculateComplexity(fragCoef, _timeHumpHeight, _timeHumpWidth, _timeOffset);
+        _minTime = Mathf.Max(Constants.MIN_SPAWN_TIME, _minTime - timeToMinus);
+        _maxTime = Mathf.Max(Constants.MIN_SPAWN_TIME + 0.5f, _maxTime - timeToMinus);
     }
 
     public void UpdateSpeed(float fragCoef)

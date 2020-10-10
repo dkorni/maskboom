@@ -2158,6 +2158,9 @@ MonoBehaviour:
   Player: {fileID: 383988467}
   _enemyPrefabs:
   - {fileID: 5949373841851556962, guid: cf4a03adf7c207941ac848f412c92ff2, type: 3}
+  _timeHumpWidth: 5.6
+  _timeHumpHeight: 0.05
+  _timeOffset: 5.1
   _minTime: 3
   _maxTime: 5
   _minSpeed: 0
@@ -2167,11 +2170,9 @@ MonoBehaviour:
   _radiusOffset: 5.1
   _minRadius: 20
   _maxRadius: 40
-  _amountHumpWidth: 15.2
-  _amounHumpHeight: 5
-  _amountOffset: 4.1
-  _minAmount: 0
-  _maxAmount: 0
+  _amountHumpWidth: -10
+  _amounHumpHeight: 0.4
+  _amountOffset: 0.4
   _maxEnemies: 10
   _currentEnemies: 0
 --- !u!1 &522228772
@@ -10230,6 +10231,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675871077580509833, guid: a97487267b19ea64f9638d297f3e77a9,
+        type: 3}
+      propertyPath: _health
+      value: 1e+13
       objectReference: {fileID: 0}
     - target: {fileID: 4675871077580509844, guid: a97487267b19ea64f9638d297f3e77a9,
         type: 3}
