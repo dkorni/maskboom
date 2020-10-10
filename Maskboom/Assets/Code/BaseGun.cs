@@ -13,6 +13,10 @@ public class BaseGun : MonoBehaviour, IGun
     [SerializeField]
     protected float _damage;
 
+    [SerializeField] protected int _currentAmmo;
+
+    [SerializeField] protected int _maxAmmo;
+
     [SerializeField] protected float _force;
 
     protected AudioSource _audioSource;
@@ -21,14 +25,26 @@ public class BaseGun : MonoBehaviour, IGun
 
     private Coroutine _shootingProcess;
 
+    private void Start()
+    {
+        _currentAmmo = _maxAmmo;
+        UiManager.Instance.UpdateAmmoText(_currentAmmo);
+    }
+
     public void Shoot()
     {
-        _shootingProcess = StartCoroutine(ShootProcess());
+        if (_currentAmmo > 0)
+        {
+            _shootingProcess = StartCoroutine(ShootProcess());
 
-        if (_audioSource == null)
-            _audioSource = GetComponent<AudioSource>();
+            if (_audioSource == null)
+                _audioSource = GetComponent<AudioSource>();
 
-        _audioSource.PlayOneShot(_shootClip);
+            _audioSource.PlayOneShot(_shootClip);
+
+            _currentAmmo -= 1;
+            UiManager.Instance.UpdateAmmoText(_currentAmmo);
+        }
     }
 
     public void StopShoot()

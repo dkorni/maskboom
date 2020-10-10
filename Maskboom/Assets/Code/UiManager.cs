@@ -21,8 +21,15 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     private Image _healthBar;
 
+    [SerializeField] private Text _ammoText;
+
     public void UpdateHealthBar(float health)
     {
         _healthBar.fillAmount = health / 100;
+    }
+
+    public void UpdateAmmoText(int ammo)
+    {
+        _ammoText.text =  "x"+ammo.ToString();
     }
 }

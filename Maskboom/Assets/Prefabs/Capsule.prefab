@@ -734,6 +734,8 @@ MonoBehaviour:
   _bullet: {fileID: 3463949918846253147, guid: 722ef5686fb84c34eb826752963aa9b1, type: 3}
   _bulletSpawn: {fileID: 8502815140968156923}
   _damage: 100
+  _currentAmmo: 0
+  _maxAmmo: 10
   _force: 15
   _shootClip: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
 --- !u!82 &3896190235811512383
