@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         _health -= damage;
 
+        UiManager.Instance.UpdateHealthBar(_health);
+
         if (_health <= 0)
         {
             OnDied?.Invoke();

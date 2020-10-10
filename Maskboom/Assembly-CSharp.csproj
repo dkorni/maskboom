@@ -77,6 +77,7 @@
     <Compile Include="Assets\Code\Interfaces\IEnemySpawner.cs" />
     <Compile Include="Assets\Code\Interfaces\IGun.cs" />
     <Compile Include="Assets\Code\UI\KillCoefficientLabel.cs" />
+    <Compile Include="Assets\Code\UiManager.cs" />
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\SmoothMouseLook.cs" />
     <None Include="Assets\Audio\SFX\ShootingSound\ReadMe.txt" />
