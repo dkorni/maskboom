@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class BaseGun : MonoBehaviour, IGun
 {
+    public int MaxAmmo
+    {
+        get { return _maxAmmo; }
+    }
+
     [SerializeField]
     protected GameObject _bullet;
 
@@ -51,6 +56,12 @@ public class BaseGun : MonoBehaviour, IGun
     {
         if(_shootingProcess != null)
             StopCoroutine(_shootingProcess);
+    }
+
+    public void AddAmmo(int ammo)
+    {
+        _currentAmmo = Mathf.Min(MaxAmmo, _currentAmmo + ammo);
+        UiManager.Instance.UpdateAmmoText(_currentAmmo);
     }
 
     protected virtual IEnumerator ShootProcess()

@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private Rigidbody _rigidbody;
 
     [SerializeField]
-    private BaseGun _gun;
+    public BaseGun Gun;
 
     [SerializeField]
     private float _speed;
@@ -28,11 +28,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         if (Input.GetMouseButtonDown(0))
         {
-            _gun.Shoot();
+            Gun.Shoot();
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            _gun.StopShoot();
+            Gun.StopShoot();
         }
     }
 
