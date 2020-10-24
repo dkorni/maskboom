@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public int AmmoBoxCount { get; set; }
+
     public event Action<float> OnKillCoefficientChanged;
 
     private static GameManager _instance;

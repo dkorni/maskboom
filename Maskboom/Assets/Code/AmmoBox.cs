@@ -13,6 +13,7 @@ public class AmmoBox : MonoBehaviour
             var ammoToAdd = 25 * gun.MaxAmmo / 100;
             gun.AddAmmo(ammoToAdd);
             Destroy(gameObject);
+            GameManager.Instance.AmmoBoxCount--;
         }
     }
 }

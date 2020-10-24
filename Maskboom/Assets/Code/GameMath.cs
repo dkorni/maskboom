@@ -27,5 +27,18 @@ public static class GameMath
         result = result + x / (Mathf.PI * offset);
 
         return result;
-    } 
+    }
+
+    /// <summary>
+    /// Calculates the logarithmic complexity.
+    /// </summary>
+    /// <param name="x">The x.</param>
+    /// <param name="o">The o.</param>
+    /// <param name="b">The b.</param>
+    /// <returns></returns>
+    public static float CalculateLogarithmicComplexity(float x, float o, float b)
+    {
+        var result = Mathf.Log(x + o) * b;
+        return result;
+    }
 }
