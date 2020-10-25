@@ -23,6 +23,8 @@ public class UiManager : MonoBehaviour
 
     [SerializeField] private Text _ammoText;
 
+    [SerializeField] private Text _killText;
+
     public void UpdateHealthBar(float health)
     {
         _healthBar.fillAmount = health / 100;
@@ -31,5 +33,10 @@ public class UiManager : MonoBehaviour
     public void UpdateAmmoText(int ammo)
     {
         _ammoText.text =  "x"+ammo.ToString();
+    }
+
+    public void UpdateKillText(int kills)
+    {
+        _killText.text = kills.ToString();
     }
 }

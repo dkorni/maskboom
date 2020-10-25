@@ -37,6 +37,18 @@ public class GameManager : MonoBehaviour
     public int AmmoBoxCount { get; set; }
     public int HealBoxCount { get; set; }
 
+    public int Kills
+    {
+        get => _kills;
+        set
+        {
+            UiManager.Instance.UpdateKillText(value);
+            _kills = value;
+        }
+    }
+
+    private int _kills;
+
     public event Action<float> OnKillCoefficientChanged;
 
     private static GameManager _instance;

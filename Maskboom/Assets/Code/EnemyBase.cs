@@ -84,6 +84,8 @@ public class EnemyBase : MonoBehaviour, IEnemy, IDamageable
         {
             Destroy(gameObject);
 
+            GameManager.Instance.Kills += 1;
+
             OnDied?.Invoke();
         }
     }
