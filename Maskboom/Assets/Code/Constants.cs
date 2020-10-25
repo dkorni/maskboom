@@ -17,5 +17,7 @@ namespace Assets.Code
         public static int MAX_ENEMIES = 200;
 
         public static float KILL_EXP = 0.01f;
+
+        public static float MAX_HEALTH = 100;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Code;
 using Assets.Code.Interfaces;
 using UnityEngine;
 
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float Health => _health;
     public void SetDamage(float damage)
     {
-        _health -= damage;
+        _health = Mathf.Min(Constants.MAX_HEALTH, _health - damage);
 
         UiManager.Instance.UpdateHealthBar(_health);
 

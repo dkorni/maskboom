@@ -4809,6 +4809,7 @@ Transform:
   - {fileID: 474111144}
   - {fileID: 522228773}
   - {fileID: 1626187766}
+  - {fileID: 1179661935}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5045,6 +5046,55 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &1179661934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1179661935}
+  - component: {fileID: 1179661936}
+  m_Layer: 0
+  m_Name: PickupSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1179661935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179661934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1121397064}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1179661936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179661934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37dad02739992dd46985eeb9ab3a55a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 383988467}
+  _ammoBoxPrefab: {fileID: 8549654244569432238, guid: 4faa444c3aafbd8499596470e8ddcdec,
+    type: 3}
+  _maxAmmoPickups: 20
+  _ammoOffset: 1
+  _ammoHeight: 1.7
 --- !u!1 &1196904644
 GameObject:
   m_ObjectHideFlags: 0
@@ -10783,7 +10833,7 @@ PrefabInstance:
     - target: {fileID: 4675871077580509833, guid: a97487267b19ea64f9638d297f3e77a9,
         type: 3}
       propertyPath: _health
-      value: 200
+      value: 1e+14
       objectReference: {fileID: 0}
     - target: {fileID: 4675871077580509833, guid: a97487267b19ea64f9638d297f3e77a9,
         type: 3}

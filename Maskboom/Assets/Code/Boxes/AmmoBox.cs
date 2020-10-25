@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AmmoBox : MonoBehaviour
 {
+    [SerializeField] private AudioClip _ammoAudioClip;
+
     private void OnTriggerEnter(Collider other)
     {
         var player = other.GetComponent<PlayerController>();
@@ -14,6 +16,7 @@ public class AmmoBox : MonoBehaviour
             gun.AddAmmo(ammoToAdd);
             Destroy(gameObject);
             GameManager.Instance.AmmoBoxCount--;
+            AudioManager.Instance.PlaySoundFx(_ammoAudioClip);
         }
     }
 }

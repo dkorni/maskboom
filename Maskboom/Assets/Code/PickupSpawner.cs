@@ -14,7 +14,11 @@ public class PickupSpawner : MonoBehaviour
 
     [SerializeField] private GameObject _ammoBoxPrefab;
 
+    [SerializeField] private GameObject _healBoxPrefab;
+
     [SerializeField] private float _maxAmmoPickups;
+
+    [SerializeField] private float _maxHealPickups;
 
     [SerializeField] private float _ammoOffset;
 
@@ -28,6 +32,29 @@ public class PickupSpawner : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnAmmo());
+        StartCoroutine(SpawnHealBoxes());
+    }
+
+    IEnumerator SpawnHealBoxes()
+    {
+        yield return new WaitForSeconds(3);
+
+        while (true)
+        {
+
+            if (GameManager.Instance.HealBoxCount < _maxHealPickups)
+            {
+                var pickupSpawnPosition = GetRandomPosition(Constants.MIN_SPAWN_DISTANCE, 30);
+
+                var ammoPickup = Instantiate(_healBoxPrefab, pickupSpawnPosition, Quaternion.identity);
+
+                Debug.DrawRay(pickupSpawnPosition, Vector3.up, Color.green, 5);
+
+                GameManager.Instance.HealBoxCount++;
+            }
+
+            yield return new WaitForSeconds(Random.Range(0.5f, 3));
+        }
     }
 
     IEnumerator SpawnAmmo()
