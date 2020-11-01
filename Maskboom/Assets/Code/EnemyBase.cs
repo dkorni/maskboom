@@ -17,6 +17,9 @@ public class EnemyBase : MonoBehaviour, IEnemy, IDamageable
     [SerializeField] private float _attackDistance;
     [SerializeField] private float _attackDelay;
 
+    [SerializeField]
+    private Animator _animator;
+
     private PlayerController _target;
 
     private NavMeshAgent _agent;
@@ -72,6 +75,7 @@ public class EnemyBase : MonoBehaviour, IEnemy, IDamageable
         while (target != null)
         {
             _agent?.SetDestination(target.position);
+            _animator.SetBool("isMove", true);
             yield return null;
         }
     }
