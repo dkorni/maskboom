@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     private Rigidbody _rigidbody;
 
     [SerializeField]
+    private Animator _animator;
+
+    [SerializeField]
     public BaseGun Gun;
 
     [SerializeField]
@@ -42,6 +45,15 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
+
+        if (horizontal != 0 || vertical != 0)
+        {
+            _animator.SetBool("isMove", true);
+        }
+        else
+        {
+            _animator.SetBool("isMove", false);
+        }
 
         var direction = new Vector3(horizontal, 0,  vertical) * _speed*Time.deltaTime;
 

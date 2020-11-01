@@ -314,9 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5376cd323c34814280e4340449e2f3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gun: {fileID: 121128469273033666}
+  Gun: {fileID: 121128469273033666}
   _speed: 4
-  _health: 1e+23
+  _health: 100
 --- !u!136 &4675871077580509845
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -735,9 +735,9 @@ MonoBehaviour:
   _bulletSpawn: {fileID: 8502815140968156923}
   _damage: 100
   _currentAmmo: 0
-  _maxAmmo: 10
+  _maxAmmo: 20
   _force: 15
-  _shootClip: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
+  _shootClip: {fileID: 8300000, guid: a58e438b7cfa445498120af0e6169082, type: 3}
 --- !u!82 &3896190235811512383
 AudioSource:
   m_ObjectHideFlags: 0
