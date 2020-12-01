@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float Health => _health;
     public void SetDamage(float damage)
     {
-        _health = Mathf.Min(Constants.MAX_HEALTH, _health - damage);
+        _health = Mathf.Min(100000000, _health - damage);
 
         UiManager.Instance.UpdateHealthBar(_health);
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public AudioClip[] Punches;
+
     public static AudioManager Instance
     {
         get
@@ -28,5 +30,11 @@ public class AudioManager : MonoBehaviour
     public void PlaySoundFx(AudioClip clip)
     {
         _source.PlayOneShot(clip);
+    }
+
+    public void PlayRandomPunch()
+    {
+        var index = Random.Range(0, Punches.Length);
+        PlaySoundFx(Punches[index]);
     }
 }

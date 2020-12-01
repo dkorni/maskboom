@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CameraController.cs" />
+    <Compile Include="Assets\Code\Attacks\AttackBase.cs" />
     <Compile Include="Assets\Code\BaseGun.cs" />
     <Compile Include="Assets\Code\Boxes\AmmoBox.cs" />
     <Compile Include="Assets\Code\Boxes\HealBox.cs" />

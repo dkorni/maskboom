@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Assets.Code.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class EnemyBase : MonoBehaviour, IEnemy, IDamageable
 {
@@ -27,6 +28,8 @@ public class EnemyBase : MonoBehaviour, IEnemy, IDamageable
     private Coroutine _moveCoroutine;
 
     private bool _isAtack;
+
+    private string[] _attackStates = new[] {"Attack_HookLeft", "Attack_HookRight"};
 
     // Start is called before the first frame update
     void Start()
@@ -56,17 +59,23 @@ public class EnemyBase : MonoBehaviour, IEnemy, IDamageable
          _target = targetPosition.GetComponent<PlayerController>();
     }
 
-    public IEnumerator Attack(IDamageable target)
+    public virtual IEnumerator Attack(IDamageable target)
     {
-        while (target.Health-_damage > 0)
-        {
-            target.SetDamage(_damage);
+        var state = _attackStates[Random.Range(0, 2)];
 
-            // todo make some delay for animations before attack
-            yield return new WaitForSeconds(_attackDelay);
+        _animator.SetTrigger(state);
+
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length / 2);
+
+        var dist = Vector3.Distance(transform.position, _target.transform.position);
+        if (dist <= _attackDistance)
+        {
+            AudioManager.Instance.PlayRandomPunch();
+            target.SetDamage(_damage);
         }
 
-        target.SetDamage(_damage);
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length / 2);
+
         _isAtack = false;
     }
 
